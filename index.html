@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCKYN - Under Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe, #00f2fe);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite alternate;
+        }
+
+        .particle:nth-child(1) {
+            width: 40px;
+            height: 40px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            width: 20px;
+            height: 20px;
+            top: 60%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            left: 70%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(4) {
+            width: 30px;
+            height: 30px;
+            top: 80%;
+            left: 80%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(5) {
+            width: 50px;
+            height: 50px;
+            top: 10%;
+            left: 60%;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(6) {
+            width: 25px;
+            height: 25px;
+            top: 30%;
+            left: 40%;
+            animation-delay: 1.5s;
+        }
+
+        .particle:nth-child(7) {
+            width: 35px;
+            height: 35px;
+            top: 70%;
+            left: 15%;
+            animation-delay: 3.5s;
+        }
+
+        .particle:nth-child(8) {
+            width: 45px;
+            height: 45px;
+            top: 50%;
+            left: 85%;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-30px) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.05);
+            }
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .link-card {
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            color: white;
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(66, 153, 225, 0.3);
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(66, 153, 225, 0.4);
+        }
+
+        .link-card.resume {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            box-shadow: 0 10px 25px rgba(72, 187, 120, 0.3);
+        }
+
+        .link-card.resume:hover {
+            box-shadow: 0 20px 40px rgba(72, 187, 120, 0.4);
+        }
+
+        .link-card.pdf {
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+            box-shadow: 0 10px 25px rgba(237, 137, 54, 0.3);
+        }
+
+        .link-card.pdf:hover {
+            box-shadow: 0 20px 40px rgba(237, 137, 54, 0.4);
+        }
+
+        .link-card.github {
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            box-shadow: 0 10px 25px rgba(74, 85, 104, 0.3);
+        }
+
+        .link-card.github:hover {
+            box-shadow: 0 20px 40px rgba(74, 85, 104, 0.4);
+        }
+
+        .link-card.linkedin {
+            background: linear-gradient(135deg, #3182ce, #2c5282);
+            box-shadow: 0 10px 25px rgba(49, 130, 206, 0.3);
+        }
+
+        .link-card.linkedin:hover {
+            box-shadow: 0 20px 40px rgba(49, 130, 206, 0.4);
+        }
+
+        .link-card.email {
+            background: linear-gradient(135deg, #9f7aea, #805ad5);
+            box-shadow: 0 10px 25px rgba(159, 122, 234, 0.3);
+        }
+
+        .link-card.email:hover {
+            box-shadow: 0 20px 40px rgba(159, 122, 234, 0.4);
+        }
+
+        .link-card.portfolio {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.3);
+            position: relative;
+        }
+
+        .link-card.portfolio:hover {
+            box-shadow: 0 20px 40px rgba(240, 147, 251, 0.4);
+        }
+
+        .wip-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #f5576c;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .icon {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .coming-soon {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(237, 137, 54, 0.1);
+            border-radius: 12px;
+            border-left: 4px solid #ed8936;
+        }
+
+        .coming-soon p {
+            color: #c05621;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .logo {
+                font-size: 3rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .links {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Fade in animation */
+        .container {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo">LCKYN</div>
+        <h1 class="title">Sorry, Under Maintenance</h1>
+        <p class="subtitle">We're working hard to improve your experience. In the meantime, you can still access my content through the links below.</p>
+
+        <div class="links">
+            <a href="https://resume.lckyn.com" class="link-card resume">
+                <span class="icon">📄</span>
+                <div>Resume</div>
+            </a>
+
+            <a href="https://resume-pdf.lckyn.com" class="link-card pdf">
+                <span class="icon">📋</span>
+                <div>Resume PDF</div>
+            </a>
+
+            <a href="https://github.lckyn.com" class="link-card github">
+                <span class="icon">💻</span>
+                <div>GitHub Profile</div>
+            </a>
+
+            <a href="https://linkedin.lckyn.com" class="link-card linkedin">
+                <span class="icon">💼</span>
+                <div>LinkedIn Profile</div>
+            </a>
+
+            <a href="mailto:T.Pawarit@lckyn.com" class="link-card email">
+                <span class="icon">✉️</span>
+                <div>Email Me</div>
+            </a>
+
+            <a href="https://portfolio.lckyn.com" class="link-card portfolio">
+                <span class="icon">🎨</span>
+                <div>Portfolio</div>
+                <span class="wip-badge">WIP</span>
+            </a>
+        </div>
+
+        <div class="coming-soon">
+            <p>🚀 New website coming soon with exciting features!</p>
+        </div>
+    </div>
+</body>
+
+</html>
